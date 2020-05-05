@@ -11,9 +11,7 @@ $("h3").text("Welcome to game "+user);
 
 
 function nextSequence(level)
-{
-    $("h3").text("level "+level);
-   
+{  
     var randomNumber=Math.floor(Math.random()*4);
     var randomChosenColour=buttonColor[randomNumber];
     gamePattern.push(randomChosenColour);
@@ -31,9 +29,10 @@ function handler()
     checkAnswer(userClickedPattern.length-1);
     if(gamePattern.length===userClickedPattern.length && startResponse)
     {
+        $("h3").text("level "+level);
         level++;
         userClickedPattern=[];
-        setTimeout(nextSequence(level),1000);
+        setTimeout(nextSequence,2000);
     }
 }
 function checkAnswer(i)
@@ -89,6 +88,7 @@ $("#play").click(function()
         level=1;
         nextSequence(level);
         startResponse=true;
+        $("h3").text("level "+level);
         $("#play").hide();
         $("#restart").show();  
     }
